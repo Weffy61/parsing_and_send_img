@@ -1,7 +1,7 @@
 import requests
 from environs import Env
 import datetime
-from load_and_save import save_image, get_file_extension, fetch_company_images
+from load_and_save import fetch_company_images
 
 
 def get_nasa_epic_image_urls(api_key, images_limit=5):

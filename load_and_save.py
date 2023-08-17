@@ -23,4 +23,4 @@ def get_file_extension(url):
 def fetch_company_images(urls: list, company, params=None):
     for link_num, link in enumerate(urls):
         image_extension = get_file_extension(link)
-        save_image(link, f'images/{company}/{company}_{link_num}{image_extension}', params)
+        save_image(link, f'images/{company}_{link_num}{image_extension}', params)

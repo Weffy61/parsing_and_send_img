@@ -3,6 +3,4 @@ venv/
 .env
 __pycache__
 .DS_Store
-images/nasa
-images/nasa_epic
-images/space_x
+images/

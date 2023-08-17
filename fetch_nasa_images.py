@@ -20,9 +20,9 @@ def get_nasa_image_urls(api_key):
 def main():
     env = Env()
     env.read_env()
-    nasa_api_key = env('NASA_API_KEY')
+    nasa_api_key = env.str('NASA_API_KEY')
     nasa_links = get_nasa_image_urls(nasa_api_key)
-    fetch_company_images(nasa_links, 'nasa')
+    fetch_company_images(nasa_links, 'nasa_apod')
 
 
 if __name__ == '__main__':
