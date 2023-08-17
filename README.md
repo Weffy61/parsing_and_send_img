@@ -37,40 +37,53 @@ export TIME=интервал отправки сообщений в часах
 ## Получение фото SpaceX
 ### Запуск
 ```commandline
-python main.py fetch_spacex_images.py -l launch_id
+python fetch_spacex_images.py -l launch_id
 ```
 `launch_id` - id конкретного запуска  
 Если у запуска нет фото получите сообщение "`Извините, по данному запуску нет фото`"  
 Получение фото с последнего запуска:
 ```commandline
-python main.py fetch_spacex_images.py
+python fetch_spacex_images.py
 ```
 #### Помощь
 ```commandline
- python fetch_spacex_images.py --help
+python fetch_spacex_images.py --help
 ```
 ## Получение фотографий дня от NASA
 Получите около 30 изображений астрономический картин дня
 ### Запуск
 ```commandline
-python main.py fetch_nasa_images.py
+python fetch_nasa_images.py
 ```
 ## Получение фото Земли от NASA
 Получите 5 изображений земли с разного ракурса
 ### Запуск
 ```commandline
-python main.py fetch_nasa_epic_images.py
+python fetch_nasa_epic_images.py
 ```
 ## Отправка фото в Telegram канал
 Отправите полученные изображения в Telegram канал с заданным интервалом. После отправки всех фото из папки `images` 
 фото продолжат отправляться в рандомном порядке
 ### Запуск
 ```commandline
-python main.py bot.py -i interval
+python bot.py -i interval
 ```
 `interval` - интервал отправки сообщений в часах.  
 Отправка фото с дефолтным интервалом
 ```commandline
-python main.py bot.py
+python bot.py
 ```
-
+#### Помощь
+```commandline
+python bot.py --help
+```
+## Отправка конкретного фото в Telegram канал
+Отправите указанное изображение в телеграм канал. Если аргумент не указан отправится случайное фото из папки `images`
+### Запуск
+```commandline
+python send_image -i image_name
+```
+#### Помощь
+```commandline
+python send_image.py --help
+```
