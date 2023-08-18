@@ -33,7 +33,7 @@ export TELEGRAM_GROUP_ID=вставить Telegram Chat ID
 ```djangourlpath
 export TELEGRAM_MESSAGE_INTERVAL=интервал отправки сообщений в часах
 ```
-Значение `TIME` по умолчанию 4 часа
+Значение `TELEGRAM_MESSAGE_INTERVAL` по умолчанию 4 часа
 ## Получение фото SpaceX
 ### Запуск
 ```commandline
