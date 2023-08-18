@@ -10,11 +10,9 @@ def get_time(interval):
     time_parser = argparse.ArgumentParser(
         description='Отправка изображений космоса с указаным интервалом в часах'
     )
-    time_parser.add_argument('-i', '--interval', help='Интервал')
+    time_parser.add_argument('-i', '--interval', help='Интервал', default=interval, type=float)
     time_args = time_parser.parse_args()
-    if time_args.interval:
-        return float(time_args.interval)
-    return interval
+    return time_args.interval
 
 
 def send_image_to_tlg(img_name, api_token, group_id):
@@ -34,7 +32,7 @@ def get_all_images():
     return all_images
 
 
-def get_image(images: list, timer, api_token, group_id):
+def send_images_to_tlg(images: list, timer, api_token, group_id):
     time_interval = timer * 3600
     counter = 0
     while True:
@@ -51,11 +49,11 @@ def main():
     env = Env()
     env.read_env()
     tlg_api = env.str('TELEGRAM_API_TOKEN')
-    interval = env.int('TIME', 4)
+    interval = env.float('TELEGRAM_MESSAGE_INTERVAL', 4)
     group_id = env.str('TELEGRAM_GROUP_ID')
     time_interval = get_time(interval)
     images = get_all_images()
-    get_image(images, time_interval, tlg_api, group_id)
+    send_images_to_tlg(images, time_interval, tlg_api, group_id)
 
 
 if __name__ == '__main__':
