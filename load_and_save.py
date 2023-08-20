@@ -12,12 +12,16 @@ def get_file_extension(url):
 
 def save_images(urls: list, company, params=None):
     for link_num, link in enumerate(urls):
-        image_extension = get_file_extension(link)
-        path = f'images/{company}_{link_num}{image_extension}'
-        image_path = Path(path).parent
-        image_path.mkdir(parents=True, exist_ok=True)
-        payload = params
-        response = requests.get(link, params=payload)
-        response.raise_for_status()
-        with open(f'{path}', 'wb') as image:
-            image.write(response.content)
+        save_image(link, link_num, company, params)
+
+
+def save_image(link, link_num, company, params=None):
+    image_extension = get_file_extension(link)
+    path = f'images/{company}_{link_num}{image_extension}'
+    image_path = Path(path).parent
+    image_path.mkdir(parents=True, exist_ok=True)
+    payload = params
+    response = requests.get(link, params=payload)
+    response.raise_for_status()
+    with open(f'{path}', 'wb') as image:
+        image.write(response.content)

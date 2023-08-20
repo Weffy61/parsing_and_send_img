@@ -34,15 +34,11 @@ def get_all_images():
 
 def send_images_to_tlg(images: list, timer, api_token, group_id):
     time_interval = timer * 3600
-    counter = 0
     while True:
-        if counter > len(images) - 1:
-            random.shuffle(images)
-            counter = 0
-        image = images[counter]
-        send_image_to_tlg(image, api_token, group_id)
-        counter += 1
-        time.sleep(time_interval)
+        for image in images:
+            send_image_to_tlg(image, api_token, group_id)
+            time.sleep(time_interval)
+        random.shuffle(images)
 
 
 def main():
