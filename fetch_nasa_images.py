@@ -1,6 +1,6 @@
 import requests
 from environs import Env
-from load_and_save import save_images
+from load_and_save import save_image
 
 
 def get_nasa_image_urls(api_key, image_limit):
@@ -23,7 +23,8 @@ def main():
     nasa_api_key = env.str('NASA_API_KEY')
     image_limit = 30
     nasa_links = get_nasa_image_urls(nasa_api_key, image_limit)
-    save_images(nasa_links, 'nasa_apod')
+    for link_num, link in enumerate(nasa_links):
+        save_image(link, link_num, 'nasa_apod')
 
 
 if __name__ == '__main__':

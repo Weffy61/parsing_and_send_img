@@ -1,6 +1,6 @@
 import argparse
 import requests
-from load_and_save import save_images
+from load_and_save import save_image
 
 
 def parse_launch_id():
@@ -32,10 +32,12 @@ def main():
     launch_id = parse_launch_id()
     if launch_id:
         spacex_links = get_images_by_launch_id(launch_id)
-        save_images(spacex_links, 'space_x')
+        for link_num, link in enumerate(spacex_links):
+            save_image(link, link_num, 'space_x')
     else:
         spacex_links = get_default_images()
-        save_images(spacex_links, 'space_x')
+        for link_num, link in enumerate(spacex_links):
+            save_image(link, link_num, 'space_x')
 
 
 if __name__ == '__main__':

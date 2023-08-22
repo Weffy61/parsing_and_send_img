@@ -1,7 +1,7 @@
 import requests
 from environs import Env
 import datetime
-from load_and_save import save_images
+from load_and_save import save_image
 
 
 def get_nasa_epic_image_urls(api_key, images_limit=5):
@@ -27,7 +27,8 @@ def main():
     nasa_api_key = env.str('NASA_API_KEY')
     api_key_payload = {'api_key': nasa_api_key}
     nasa_epic_links = get_nasa_epic_image_urls(api_key_payload)
-    save_images(nasa_epic_links, 'nasa_epic', api_key_payload)
+    for link_num, link in enumerate(nasa_epic_links):
+        save_image(link, link_num, 'nasa_epic', params=api_key_payload)
 
 
 if __name__ == '__main__':

@@ -10,11 +10,6 @@ def get_file_extension(url):
     return extension
 
 
-def save_images(urls: list, company, params=None):
-    for link_num, link in enumerate(urls):
-        save_image(link, link_num, company, params)
-
-
 def save_image(link, link_num, company, params=None):
     image_extension = get_file_extension(link)
     path = f'images/{company}_{link_num}{image_extension}'
