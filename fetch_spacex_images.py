@@ -32,12 +32,10 @@ def main():
     launch_id = parse_launch_id()
     if launch_id:
         spacex_links = get_images_by_launch_id(launch_id)
-        for link_num, link in enumerate(spacex_links):
-            save_image(link, link_num, 'space_x')
     else:
         spacex_links = get_default_images()
-        for link_num, link in enumerate(spacex_links):
-            save_image(link, link_num, 'space_x')
+    for link_num, link in enumerate(spacex_links):
+        save_image(link, link_num, 'space_x')
 
 
 if __name__ == '__main__':
