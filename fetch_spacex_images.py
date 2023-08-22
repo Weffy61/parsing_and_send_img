@@ -28,16 +28,14 @@ def get_default_images():
     return images_urls
 
 
-def get_spacex_image_urls(launch_id):
-    if launch_id:
-        return get_images_by_launch_id(launch_id)
-    return get_default_images()
-
-
 def main():
     launch_id = parse_launch_id()
-    spacex_links = get_spacex_image_urls(launch_id=launch_id)
-    save_images(spacex_links, 'space_x')
+    if launch_id:
+        spacex_links = get_images_by_launch_id(launch_id)
+        save_images(spacex_links, 'space_x')
+    else:
+        spacex_links = get_default_images()
+        save_images(spacex_links, 'space_x')
 
 
 if __name__ == '__main__':
